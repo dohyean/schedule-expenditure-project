@@ -11,8 +11,18 @@ let db = new sqlite3.Database("./db_control.db", (err) => {
   console.log("Connected to the chinook database.");
 });
 
-const sqlQuery = "select * from user_data";
+var sqlQuery = "select * from user_data";
 db.all(sqlQuery, (err, result) => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log(result);
+  }
+});
+
+sqlQuery =
+  "INSERT INTO user_data(user_id, user_phone, user_email, user_name, user_SSN) VALUES('what', 'the', 'fxx', 'say', 'the')";
+db.run(sqlQuery, (err, result) => {
   if (err) {
     console.log(err);
   } else {
