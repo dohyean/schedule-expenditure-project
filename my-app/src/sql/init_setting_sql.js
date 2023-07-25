@@ -1,3 +1,4 @@
+// sql test page (나중에 여기서 확인하고 필요한거 사용하기)
 const express = require("express");
 const path = require("path");
 const dbPath = path.resolve(__dirname, `db_control.db`);

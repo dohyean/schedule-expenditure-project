@@ -1,3 +1,4 @@
+// 해당 클라이언트는 우리가 사용할 클라이언트는 아니지만 참고용으로 남겨둠
 import React, { Component } from "react";
 import io from "socket.io-client"; //모듈 가져오기
 const socket = io.connect("http://localhost:3001"); //백엔드 서버 포트를3001와 socket연결
