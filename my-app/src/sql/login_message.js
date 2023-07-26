@@ -1,5 +1,6 @@
 var Open_dbms = require("./open_dbms.js");
 var Close_dbms = require("./close_dbms.js");
+var Sql_select = require("./sql_select.js");
 
 // 로그인 모듈
 exports.Login_message = function (id, pw) {
@@ -8,14 +9,7 @@ exports.Login_message = function (id, pw) {
 
   var db = Open_dbms.open_dbms();
 
-  var sqlQuery = "select * from user_data";
-  db.all(sqlQuery, (err, result) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log(result);
-    }
-  });
+  Sql_select.sql_select(db, "user_data");
 
   Close_dbms.close_dbms(db);
 };
