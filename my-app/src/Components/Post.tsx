@@ -1,7 +1,7 @@
-import './Main.css';
+import '../Style/Post.css';
 import Login from './Login';
 
-function Main() {
+function Post() {
     return (
         <div className='body_box'>
             <div className="left_box">
@@ -21,4 +21,4 @@ function Main() {
     )   
 }
 
-export default Main;
+export default Post;

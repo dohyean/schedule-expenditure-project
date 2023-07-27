@@ -1,6 +1,22 @@
-import './Login.css';
+import '../Style/Login.css';
+import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
+    const navigate = useNavigate();
+
+    const navigateToFindid = () => {
+        navigate("find_id");
+    };
+
+    const navigateToFindpw = () => {
+        navigate("find_pw");
+    };
+
+    const navigateToCreate = () => {
+        navigate("/create");
+    };
+
     return (
         <div className="right_box">
             <div className="login_form">
@@ -25,13 +41,13 @@ function Login() {
                 </div>
                 <div className="login_option">
                     <form method="get" className="option1">
-                        <button type="submit" className="option1_inner">아이디</button>
+                        <button type="submit" className="option1_inner" onClick={navigateToFindid}>아이디</button>
                     </form>
                     <form method="get" className="option2">
-                        <button type="submit" className="option2_inner">비밀번호</button>
+                        <button type="submit" className="option2_inner" onClick={navigateToFindpw}>비밀번호</button>
                     </form>
                     <form method="get" className="option3">
-                        <button type="submit" className="option3_inner">회원가입</button>
+                        <button type="submit" className="option3_inner" onClick={navigateToCreate}>회원가입</button>
                     </form>
                 </div>
             </div>
