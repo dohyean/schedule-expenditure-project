@@ -1,15 +1,11 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-// import APP from "./App";
-import Client from "./socket_test/client";
-import Login from "./socket_test/login_test";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
 
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
-    {/* <APP></APP> */}
-    <Login></Login>
+    <App />
+    {/* <Login /> */}
   </React.StrictMode>
 );
