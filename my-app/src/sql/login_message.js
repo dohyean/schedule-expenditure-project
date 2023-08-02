@@ -40,7 +40,13 @@ exports.Login_message = function (id, pw) {
   // UPDATE 구문
   var up_where = [];
   up_where[0] = "1";
-  Sql_update.sql_update(db, "user_data", "user_phone = \"what the\"", "WHERE user_id = ?", up_where);
+  Sql_update.sql_update(
+    db,
+    "user_data",
+    'user_phone = "what the"',
+    "WHERE user_id = ?",
+    up_where
+  );
 
   Sql_select.sql_select(db, "user_data", use);
 
