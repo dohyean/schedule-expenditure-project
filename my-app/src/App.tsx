@@ -1,5 +1,5 @@
 import React from 'react';
-import Post from './Components/Post';
+import Post from './Components/PostBoard';
 import { BrowserRouter } from 'react-router-dom';
 import {  Route ,Routes } from 'react-router-dom';
 import Find_id from './Components/Find_id';

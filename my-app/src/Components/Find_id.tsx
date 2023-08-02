@@ -15,7 +15,7 @@ const Find_id = () => {
                             <div className="phone_section">
                                 <span className="subtitle3">e-mail : </span>
                                 <input type="text" name="phone" className="phone1" placeholder="이메일을 입력해주세요"></input>
-                                <button className="find_id_form_btn">확인</button>
+                                <button type="submit" className="find_id_form_btn">확인</button>
                             </div>
 
                         </fieldset>
