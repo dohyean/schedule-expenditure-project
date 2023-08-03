@@ -2,7 +2,7 @@
 const sqlite3 = require("sqlite3").verbose();
 
 exports.open_dbms = function () {
-  var db = new sqlite3.Database("../sql/db_control.db", (err) => {
+  var db = new sqlite3.Database("./db_control.db", (err) => {
     if (err) {
       console.error(err.message);
     }

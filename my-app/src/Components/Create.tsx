@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import io from "socket.io-client";
-const socket = io("http://localhost:3001", { transports: ["websocket"] });
+const Create_ID_Dpulicate = require("./Function/Create_ID_Duplicate.js");
 
 function Create() {
   const [state, setState] = useState({
@@ -13,14 +13,13 @@ function Create() {
     SSN: "",
     email: "",
     Duplicate: 0,
-    count: 0,
   });
 
   const navigate = useNavigate();
 
-  // function navigateToBack() {
-  //   navigate("/");
-  // }
+  function navigateToBack() {
+    navigate("/");
+  }
 
   function handleChange(e: any) {
     setState({
@@ -29,68 +28,54 @@ function Create() {
     });
   }
 
-  function send_msg() {
-    socket.emit("Send Duplicate Check", {
-      id: state.id,
-    });
+  function Duplicate_set(num: any) {
     setState({
       ...state,
-      id: "",
+      Duplicate: num,
     });
   }
 
-  function rec_msg() {
-    socket.on("Receive Duplicate Check", (message) => {
-      setState({
-        ...state,
-        Duplicate: message.receive_msg,
-      });
-    });
-  }
-
-  function send_msg1() {
-    setState({
-      ...state,
-      Duplicate: 0,
-      count: 0,
-    });
-    alert(state.Duplicate);
-    socket.connect();
-    send_msg();
-    const timer = setInterval(() => {
-      setState({
-        ...state,
-        count: state.count + 1,
-      });
-    }, 1000);
-    rec_msg();
-  }
-
-  useEffect(() => {
-    console.log("user 값이 설정됨");
-    console.log(state.Duplicate);
-    return () => {
-      console.log("user 가 바뀌기 전..");
-      console.log(state.Duplicate);
-    };
-  }, [state.Duplicate]);
-
-  function user_update() {
-    // socket.disconnect();
-  }
-
-  async function pre_id_Check() {
+  // 아이디 중복 확인
+  async function Duplicate_check() {
+    Duplicate_set(0);
     if (state.id === "") {
       alert("아이디를 입력해주세요.");
     } else {
-      await send_msg1();
-
-      if (state.Duplicate === 0) {
-        alert("0 입니다.");
-      } else if (state.Duplicate === 1) {
-        alert("1 입니다.");
+      const socket = io("http://localhost:3001", { transports: ["websocket"] });
+      await Create_ID_Dpulicate.Send_Duplicate(socket, state.id);
+      var Duplicate = await Create_ID_Dpulicate.Rec_Duplicate(socket);
+      if (Duplicate === 2) {
+        alert("아이디가 중복됩니다.");
+      } else if (Duplicate === 1) {
+        Duplicate_set(1);
+        alert("사용가능한 아이디입니다.");
       } else {
-        alert("2 입니다.");
+        alert("관리지에게 문의하세요.");
+      }
+      socket.disconnect();
+    }
+  }
+
+  // 최종 확인
+  function Create_Membership_check() {
+    if (state.Duplicate === 0) {
+      alert("아이디 중복 확인해 주세요.");
+    } else {
+      if (
+        state.pw === "" ||
+        state.name === "" ||
+        state.phone === "" ||
+        state.SSN === "" ||
+        state.email === ""
+      ) {
+        alert("정보를 입력하세요.");
+      } else {
+        if (state.pw === state.pw_check) {
+          alert("회원가입이 완료되었습니다.");
+          navigateToBack();
+        } else {
+          alert("비밀번호가 다릅니다.");
+        }
       }
     }
   }
@@ -112,9 +97,9 @@ function Create() {
                 onChange={handleChange}
               ></input>
               <button
-                type="button"
                 className="id_check_btn"
-                onClick={pre_id_Check}
+                type="button"
+                onClick={Duplicate_check}
               >
                 중복
               </button>
@@ -187,7 +172,11 @@ function Create() {
             ></input>
           </div>
         </fieldset>
-        <button type="button" className="create_btn" onClick={user_update}>
+        <button
+          type="button"
+          className="create_btn"
+          onClick={Create_Membership_check}
+        >
           확인
         </button>
       </form>

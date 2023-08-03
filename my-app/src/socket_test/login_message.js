@@ -1,8 +1,8 @@
-var Open_dbms = require("./Open_dbms.js");
+var Open_dbms = require("./function/Open_dbms.js");
 var Close_dbms = require("./Close_dbms.js");
 var Sql_select = require("./Sql_select.js");
 var Sql_insert = require("./Sql_insert.js");
-var Sql_delete = require("./Sql_delete.js");
+var Sql_delete = require("./Query_module/Sql_delete.js");
 var Sql_update = require("./Sql_update.js");
 
 // 로그인 모듈
