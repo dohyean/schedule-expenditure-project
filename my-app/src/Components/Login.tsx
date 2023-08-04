@@ -1,6 +1,5 @@
 import "../Style/Login.css";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import io from "socket.io-client";
 
@@ -135,15 +134,13 @@ function Login() {
             </button>
           </form>
           <form method="get" className="option3">
-            <Link to="/create">
-              <button
-                type="submit"
-                className="option3_inner"
-                // onClick={navigateToCreate}
-              >
-                회원가입
-              </button>
-            </Link>
+            <button
+              type="submit"
+              className="option3_inner"
+              onClick={navigateToCreate}
+            >
+              회원가입
+            </button>
           </form>
         </div>
       </div>

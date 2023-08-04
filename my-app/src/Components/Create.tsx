@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import io from "socket.io-client";
 const Create_ID_Dpulicate = require("./Function/Create_ID_Duplicate.js");
+const Create_PW_Rule_check = require("./Function/Create_PW_Rule_check.js");
+const Create_User_Data = require("./Function/Create_User_Data.js");
 
 function Create() {
   const [state, setState] = useState({
@@ -16,10 +18,9 @@ function Create() {
   });
 
   const navigate = useNavigate();
-
-  function navigateToBack() {
+  const navigateToBack = () => {
     navigate("/");
-  }
+  };
 
   function handleChange(e: any) {
     setState({
@@ -28,7 +29,7 @@ function Create() {
     });
   }
 
-  function Duplicate_set(num: any) {
+  function Duplicate_set(num: number) {
     setState({
       ...state,
       Duplicate: num,
@@ -50,10 +51,23 @@ function Create() {
         Duplicate_set(1);
         alert("사용가능한 아이디입니다.");
       } else {
-        alert("관리지에게 문의하세요.");
+        alert("관리지에게 문의해주세요.");
       }
       socket.disconnect();
     }
+  }
+
+  async function User_Data_Save() {
+    const socket = io("http://localhost:3001", { transports: ["websocket"] });
+    await Create_User_Data.Send_User_Data(socket, state);
+    var User_save = await Create_User_Data.Rec_User_Data(socket);
+    if (User_save === 0) {
+      alert("관리자에게 문의해주세요.");
+    } else {
+      alert("회원가입이 완료되었습니다.");
+      navigateToBack();
+    }
+    socket.disconnect();
   }
 
   // 최종 확인
@@ -71,13 +85,20 @@ function Create() {
         alert("정보를 입력하세요.");
       } else {
         if (state.pw === state.pw_check) {
-          alert("회원가입이 완료되었습니다.");
-          navigateToBack();
+          if (Create_PW_Rule_check.PW_Rule_check(state.pw) === 0) {
+            User_Data_Save();
+          } else {
+            alert("8~16자의 영문 대/소문자, 숫자, 특수문자를 사용해 주세요.");
+          }
         } else {
           alert("비밀번호가 다릅니다.");
         }
       }
     }
+  }
+
+  function ID_Click() {
+    Duplicate_set(0);
   }
 
   return (
@@ -94,6 +115,7 @@ function Create() {
                 className="id"
                 value={state.id}
                 placeholder="아이디를 입력해주세요"
+                onClick={ID_Click}
                 onChange={handleChange}
               ></input>
               <button
