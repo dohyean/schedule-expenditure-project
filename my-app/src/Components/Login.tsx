@@ -1,5 +1,5 @@
 import "../Style/Login.css";
-import React, { useState } from "react";
+import React, { useState, KeyboardEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import io from "socket.io-client";
 const Login_ID_PW = require("./Function/Login_ID_PW.js");
@@ -29,6 +29,12 @@ function Login() {
       [e.target.name]: e.target.value,
     });
   }
+
+  const handleOnKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      Login_check();
+    }
+  };
 
   // login 확인
   async function Login_check() {
@@ -65,6 +71,7 @@ function Login() {
               className="login_id"
               placeholder="아이디"
               onChange={handleChange}
+              onKeyUp={handleOnKeyPress}
             ></input>
             <input
               type="password"
@@ -73,6 +80,7 @@ function Login() {
               value={state.pw}
               placeholder="비밀번호"
               onChange={handleChange}
+              onKeyUp={handleOnKeyPress}
             ></input>
           </div>
           <form method="get">
