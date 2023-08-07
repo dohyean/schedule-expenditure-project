@@ -1,7 +1,7 @@
 import React from "react";
 import PostTd from "./PostTd";
 
-interface PostData {
+interface PostItem {
   id: number;
   name: string;
   date: string;
@@ -10,24 +10,22 @@ interface PostData {
 }
 
 interface PostTrProps {
-  info: PostData[];
+  info: PostItem[];
   handleRemove: (id: number) => void;
-  handleEdit: (item: PostData) => void;
+  handleEdit: (item: PostItem) => void;
 }
 
 const PostTr: React.FC<PostTrProps> = ({ info, handleRemove, handleEdit }) => {
   return (
     <tbody>
-      {info.map((item) => {
-        return (
-          <PostTd
-            key={item.id}
-            item={item}
-            handleRemove={handleRemove}
-            handleEdit={handleEdit}
-          />
-        );
-      })}
+      {info.map((item) => (
+        <PostTd
+          key={item.id}
+          item={item}
+          handleRemove={handleRemove}
+          handleEdit={handleEdit}
+        />
+      ))}
     </tbody>
   );
 };

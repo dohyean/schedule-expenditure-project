@@ -1,6 +1,11 @@
 import React from "react";
+import "../Style/PostTd.css";
+// 밑에는 편집, 삭제 아이콘 사용을 위해 import함
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit } from "@fortawesome/free-regular-svg-icons";
+import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
 
-interface PostData {
+interface PostItem {
   id: number;
   name: string;
   date: string;
@@ -9,9 +14,9 @@ interface PostData {
 }
 
 interface PostTdProps {
-  item: PostData;
+  item: PostItem;
   handleRemove: (id: number) => void;
-  handleEdit: (item: PostData) => void;
+  handleEdit: (item: PostItem) => void;
 }
 
 const PostTd: React.FC<PostTdProps> = ({ item, handleRemove, handleEdit }) => {
@@ -24,18 +29,18 @@ const PostTd: React.FC<PostTdProps> = ({ item, handleRemove, handleEdit }) => {
   };
 
   return (
-    <tr className="bg-white border-2 border-gray-200">
-      <td className="px-4 py-3">{item.id}</td>
-      <td className="px-4 py-3">{item.name}</td>
-      <td className="px-4 py-3">{item.date}</td>
-      <td className="px-4 py-3">{item.title}</td>
-      <td className="px-4 py-3">{item.content}</td>
-      <td onClick={onEdit} className="text-center text-purple-400 cursor-pointer show-modal">
-        <i className="far fa-edit"></i>
-      </td>
-      <td onClick={onRemove} className="text-center text-purple-400 cursor-pointer">
-        <i className="far fa-trash-alt"></i>
-      </td>
+    <tr className="tr2">
+      <tbody className="tb">{item.id}</tbody>
+      <tbody className="tb">{item.name}</tbody>
+      <tbody className="tb">{item.date}</tbody>
+      <tbody className="tb">{item.title}</tbody>
+      <tbody className="tb">{item.content}</tbody>
+      <tbody onClick={onEdit} className="edit_btn">
+        <FontAwesomeIcon icon={faEdit} />
+      </tbody>
+      <tbody onClick={onRemove} className="remove_btn">
+        <FontAwesomeIcon icon={faTrashAlt} />
+      </tbody>
     </tr>
   );
 };
