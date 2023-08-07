@@ -11,9 +11,9 @@ const Find_pw = () => {
 
   const navigate = useNavigate();
 
-  // const navigateToBack = () => {
-  //   navigate("/");
-  // };
+  const navigateToBack = () => {
+    navigate("/");
+  };
 
   function handleChange(e: any) {
     setState({
@@ -28,6 +28,7 @@ const Find_pw = () => {
     var PW = await Find_PW_ID_Phone.Rec_Find_PW(socket);
     if (PW.num === 2) {
       alert('비밀번호는 "' + PW.PW + '"입니다.');
+      navigateToBack();
     } else if (PW.num === 1) {
       alert("아이디 혹은 이메일이 잘못되었습니다.");
     } else {

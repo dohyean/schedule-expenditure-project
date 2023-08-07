@@ -2,6 +2,7 @@ import "../Style/Login.css";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import io from "socket.io-client";
+const Login_ID_PW = require("./Function/Login_ID_PW.js");
 
 function Login() {
   const [state, setState] = useState({
@@ -29,60 +30,26 @@ function Login() {
     });
   }
 
-  // 아이디 확인
-  function Send_Login_ID(socket: any) {
-    return new Promise((resolve, reject) => {
-      socket.emit("Send Login ID Check", {
-        id: state.id,
-      });
-      resolve(0);
-    });
-  }
-  function Rec_Login_ID(socket: any) {
-    return new Promise((resolve, reject) => {
-      socket.on("Receive Login ID Check", (message: any) => {
-        resolve(message.ID_check);
-      });
-    });
-  }
-
-  // 패스워드 확인
-  function Send_Login_PW(socket: any) {
-    return new Promise((resolve, reject) => {
-      socket.emit("Send Login PW Check", {
-        pw: state.pw,
-      });
-      resolve(0);
-    });
-  }
-  function Rec_Login_PW(socket: any) {
-    return new Promise((resolve, reject) => {
-      socket.on("Receive Login PW Check", (message: any) => {
-        resolve(message.PW_check);
-      });
-    });
-  }
-
   // login 확인
   async function Login_check() {
     const socket = io("http://localhost:3001", { transports: ["websocket"] });
 
-    await Send_Login_ID(socket);
-    var ID_check = await Rec_Login_ID(socket);
+    await Login_ID_PW.Send_Login_ID(socket, state.id);
+    var ID_check = await Login_ID_PW.Rec_Login_ID(socket);
     if (ID_check === 2) {
-      await Send_Login_PW(socket);
-      var PW_check = await Rec_Login_PW(socket);
+      await Login_ID_PW.Send_Login_PW(socket, state.pw);
+      var PW_check = await Login_ID_PW.Rec_Login_PW(socket);
       if (PW_check === 2) {
-        alert("pw 로그인 성공");
+        alert("로그인 성공");
       } else if (PW_check === 1) {
-        alert("pw 아이디가 없거나 비밀번호가 틀립니다.");
+        alert("아이디가 없거나 비밀번호가 틀립니다.");
       } else {
-        alert("pw 관리자에게 문의하세요.");
+        alert("관리자에게 문의하세요.");
       }
     } else if (ID_check === 1) {
-      alert("id 아이디가 없거나 비밀번호가 틀립니다.");
+      alert("아이디가 없거나 비밀번호가 틀립니다.");
     } else {
-      alert("id 관리자에게 문의하세요.");
+      alert("관리자에게 문의하세요.");
     }
     socket.disconnect();
   }
