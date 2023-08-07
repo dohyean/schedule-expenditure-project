@@ -27,6 +27,7 @@ class client extends Component {
       role: this.state.role,
     });
   };
+
   componentWillMount() {
     socket.on("receive message", (message) => {
       //"receive message"라는 이벤트 받음(2)
@@ -40,6 +41,7 @@ class client extends Component {
       [e.target.name]: e.target.value,
     });
   };
+
   render() {
     return (
       <div>
