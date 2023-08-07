@@ -1,0 +1,87 @@
+.body_box {
+    display: flex;
+    flex-direction: column;
+}
+
+.bottom_box {
+    display: flex;
+    flex-direction: row;
+}
+
+.left_box {
+    background-color: aqua;
+    width: 70%;
+    height: 200px;
+    position: relative;
+}
+
+.main_area {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center; /* 로그인 폼 안의 요소들이 중앙 */
+    align-items: center; /* 로그인 폼 안의 요소들이 중앙 */
+    position: absolute;
+    top : 0%;
+    left: 50%;
+    transform: translate(-50%,10%);
+}
+/* 
+    box의 position: relative;, height: 100%; 과 
+    login-form의 position: absolute; 는
+    로그인 폼을 중앙정렬하기 위한 사전작업
+*/
+
+/* tailwindcss에서는 container max-w-screen-lg mx-auto */
+.post_table {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3rem;
+}
+
+/* tailwindcss에서는 container max-w-screen-lg mx-auto */
+.complain_table {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 6rem;
+}
+
+/* tailwind에서는 text-xl font-bold mt-5 mb-3 text-center */
+.h1 {
+    font-size: 2.25rem;
+    font-weight: bold;
+    margin-top: 1.25rem;
+    margin-bottom: 0.75rem;
+    text-align: center;
+}
+
+/* tailwindcss에서는 min-w-full table-auto text-gray-800 */
+.table {
+    min-width: 100%;
+    table-layout: auto;
+    color: #2d3748;
+}
+
+/* tailwindcss에서는 justify-between */
+.thead {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* tailwindcss에서는 bg-gray-800 */
+.tr1 {
+    background-color: #2d3748;
+}
+
+/* tailwindcss에서는 text-gray-300 px-4 py-3 */
+.contents1 {
+    color: #d1d5db;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
