@@ -46,7 +46,7 @@ function Login() {
       await Login_ID_PW.Send_Login_PW(socket, state.pw);
       var PW_check = await Login_ID_PW.Rec_Login_PW(socket);
       if (PW_check === 2) {
-        alert("로그인 성공");
+        navigate("/test", { state: { id: state.id } });
       } else if (PW_check === 1) {
         alert("아이디가 없거나 비밀번호가 틀립니다.");
       } else {
