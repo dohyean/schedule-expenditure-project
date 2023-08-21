@@ -20,8 +20,6 @@ exports.find_id_email = async function (db, io, email) {
     receive_type = receive_type.user_id;
   }
 
-  console.log(receive_type);
-
   return new Promise((resolve, reject) => {
     io.emit("Receive Find ID Check", { ID: receive_type, num: send_rec_type });
     resolve(send_rec_type);
