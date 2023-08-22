@@ -54,7 +54,6 @@ const PostTd: React.FC<PostTdProps> = ({
   }
 
   const onEdit = () => {
-    alert(cur_num);
     navigate("/postmodal", {
       state: {
         item: item,
@@ -65,15 +64,38 @@ const PostTd: React.FC<PostTdProps> = ({
   };
 
   // 여기에 sql 데이터 연동 편집 기능 넣기
+  const onContent = () => {
+    navigate("/postboard_content", {
+      state: {
+        id: item.id,
+        name: item.name,
+        date: item.date,
+        title: item.title,
+        content: item.content,
+        notice_complaint: notice_complaint,
+        cur_num: cur_num,
+      },
+    });
+  };
 
   if (item.id === user_id) {
     return (
       <tr className="tr2">
-        <tbody className="tb">{item.order}</tbody>
-        <tbody className="tb">{item.name}</tbody>
-        <tbody className="tb">{item.date}</tbody>
-        <tbody className="tb">{item.title}</tbody>
-        <tbody className="tb">{item.content}</tbody>
+        <tbody className="tb" onClick={onContent}>
+          {item.order}
+        </tbody>
+        <tbody className="tb" onClick={onContent}>
+          {item.name}
+        </tbody>
+        <tbody className="tb" onClick={onContent}>
+          {item.date}
+        </tbody>
+        <tbody className="tb" onClick={onContent}>
+          {item.title}
+        </tbody>
+        <tbody className="tb" onClick={onContent}>
+          {item.content}
+        </tbody>
         <tbody onClick={onEdit} className="edit_btn">
           <FontAwesomeIcon icon={faEdit} />
         </tbody>
@@ -85,11 +107,21 @@ const PostTd: React.FC<PostTdProps> = ({
   } else {
     return (
       <tr className="tr2">
-        <tbody className="tb">{item.order}</tbody>
-        <tbody className="tb">{item.name}</tbody>
-        <tbody className="tb">{item.date}</tbody>
-        <tbody className="tb">{item.title}</tbody>
-        <tbody className="tb">{item.content}</tbody>
+        <tbody className="tb" onClick={onContent}>
+          {item.order}
+        </tbody>
+        <tbody className="tb" onClick={onContent}>
+          {item.name}
+        </tbody>
+        <tbody className="tb" onClick={onContent}>
+          {item.date}
+        </tbody>
+        <tbody className="tb" onClick={onContent}>
+          {item.title}
+        </tbody>
+        <tbody className="tb" onClick={onContent}>
+          {item.content}
+        </tbody>
         <tbody className="not_use_edit_btn">
           <FontAwesomeIcon icon={faEdit} />
         </tbody>

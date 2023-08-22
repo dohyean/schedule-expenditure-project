@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import "../Style/PostBoard.css";
 /* import TopMenu from './TopMenu'; */
 import Login from "./Login";
@@ -18,8 +19,10 @@ interface PostItem {
 }
 
 const PostBoard: React.FC = () => {
+  const location = useLocation();
+  const user_info = { ...location.state };
   const [notice, setNotice] = useState<PostItem[]>([]);
-  const [cur_num, setCurNum] = useState<number>(1);
+  const [cur_num, setCurNum] = useState<number>(user_info.cur_num);
   const [loading, setLoading] = useState(false);
   const [data_change, setDataChange] = useState<number>(1);
 
@@ -52,7 +55,6 @@ const PostBoard: React.FC = () => {
     await PostBoard_Data_Save.Send_Notice_Five_Data(socket, cur_num);
     const data = await PostBoard_Data_Save.Rec_Notice_Five_Data(socket);
     await use_notice_save_data(data);
-    console.log(data);
     socket.disconnect();
   }
 
@@ -116,7 +118,7 @@ const PostBoard: React.FC = () => {
                     <PostTr
                       info={notice}
                       user_id={""}
-                      notice_complaint={"공지사항"}
+                      notice_complaint={"로그인 공지사항"}
                       cur_num={cur_num}
                       handleDataChange={set_data_change}
                     />
