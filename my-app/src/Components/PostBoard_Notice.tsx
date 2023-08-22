@@ -133,6 +133,7 @@ const PostBoard_Notice: React.FC = () => {
                   <button type="button" onClick={go_left}>
                     ◀
                   </button>
+                  <text> {cur_num} page </text>
                   <button type="button" onClick={go_right}>
                     ▶
                   </button>

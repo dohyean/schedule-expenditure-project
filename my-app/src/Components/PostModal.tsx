@@ -65,7 +65,7 @@ function PostModal() {
           data = await PostModal_Update.Rec_Complaint_Data_Update(socket);
         }
         if (data === 1) {
-          alert("성공");
+          Go_Back();
         } else {
           alert("관리자에게 문의해주세요.");
         }

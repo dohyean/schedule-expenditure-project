@@ -4,7 +4,6 @@
 exports.sql_update = function (db, schema, column, where, where_data) {
   return new Promise((resolve, rejects) => {
     var sqlQuery = `UPDATE ${schema} SET ${column} ${where};`;
-    console.log(sqlQuery);
     db.all(sqlQuery, where_data, (err, result) => {
       if (err) {
         resolve(0);

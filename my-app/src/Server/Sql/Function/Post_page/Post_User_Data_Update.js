@@ -9,7 +9,7 @@ function user_notice_data_update(db, io, data) {
   var receive_type = Sql_update.sql_update(
     db,
     "notice_data",
-    `note_title = ${data.title}, note_content = ${data.content}`,
+    `note_title = '${data.title}', note_content = '${data.content}'`,
     "WHERE note_id = ? AND note_date = ? AND note_title = ? AND note_content = ?",
     update_where
   );
