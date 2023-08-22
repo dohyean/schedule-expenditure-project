@@ -1,39 +1,59 @@
 /* tailwindcss에서는 bg-white border-2 border-gray-200 */
 .tr2 {
-    background-color: white;
-    border: 2px solid;
-    border-color: #8b5cf6;
-    justify-content: center;
-    display: flex;
-    flex-direction: row;
+  background-color: white;
+  border: 2px solid;
+  border-color: #8b5cf6;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
 }
 
 /* tailwindcss에서는 px-4 py-3 */
 .tb {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 /* tailwindcss에서는 text-center text-purple-400 cursor-pointer show-modal */
 .edit_btn {
-    text-align: center;
-    color: #8b5cf6;
-    cursor: pointer;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
+  text-align: center;
+  color: #8b5cf6;
+  cursor: pointer;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.not_use_edit_btn {
+  text-align: center;
+  color: #9ea4aa;
+  cursor: pointer;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 /* tailwindcss에서는 text-center text-purple-400 cursor-pointer */
 .remove_btn {
-    text-align: center;
-    color: #8b5cf6;
-    cursor: pointer;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
+  text-align: center;
+  color: #8b5cf6;
+  cursor: pointer;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.not_use_remove_btn {
+  text-align: center;
+  color: #9ea4aa;
+  cursor: pointer;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }

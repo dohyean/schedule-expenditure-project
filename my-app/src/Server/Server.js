@@ -46,6 +46,20 @@ async function Ftn_Login_check(db, io, item, id_pw) {
   }
 }
 
+// PostFunc 관련
+const User_Name = require("./Sql/Function/Post_page/Post_User_Name.js");
+const Notice_Data_Save = require("./Sql/Function/Post_page/Post_Notice_Data_Save.js");
+const Complaint_Data_Save = require("./Sql/Function/Post_page/Post_Complaint_Data_Save.js");
+async function Ftn_Notice_Data(db, io, item) {
+  Notice_Data_Save.notice_data_save(db, io, item);
+}
+async function Ftn_Complaint_Data(db, io, item) {
+  Complaint_Data_Save.complaint_data_save(db, io, item);
+}
+async function Ftn_User_Name(db, io, item) {
+  User_Name.user_name(db, io, item.id);
+}
+
 io.on("connection", (socket) => {
   // 서버 연결
   const db = Open_dbms.open_dbms();
@@ -76,6 +90,46 @@ io.on("connection", (socket) => {
     Ftn_Login_check(db, io, item, 1); // 패스워드 확인
   });
 
+  // PostFunc 관련
+  socket.on("Send Notice Data Save", (item) => {
+    Ftn_Notice_Data(db, io, item.notice_data); // 공지사항 데이터 저장
+  });
+  socket.on("Send Complaint Data Save", (item) => {
+    Ftn_Complaint_Data(db, io, item.complaint_data); // 불만사항 데이터 저장
+  });
+  socket.on("Send User Name Check", (item) => {
+    Ftn_User_Name(db, io, item); // 유저 이름 반환
+  });
+
+  // PostBoard 관련
+  const User_Five_Data = require("./Sql/Function/Post_page/Post_User_Data_Send.js");
+  socket.on("Send Notice Ten Data Save", (item) => {
+    User_Five_Data.ftn_user_notice_data(db, io, item); // 공지사항 데이터
+  });
+  socket.on("Send Complaint Ten Data Save", (item) => {
+    User_Five_Data.ftn_user_complaint_data(db, io, item); // 불만사항 데이터
+  });
+  const Notice_Max_Num = require("./Sql/Function/Post_page/Post_Max_Num.js");
+  socket.on("Send Notice Max Num", (item) => {
+    Notice_Max_Num.ftn_notice_max_num(db, io); // 공지사항 최대 번호
+  });
+  socket.on("Send Complaint Max Num", (item) => {
+    Notice_Max_Num.ftn_complaint_max_num(db, io); // 불만사항 최대 번호
+  });
+  const User_Data_Delete = require("./Sql/Function/Post_page/Post_User_Data_Delete.js");
+  socket.on("Send Notice Data Delete", (item) => {
+    User_Data_Delete.ftn_notice_data_delete(db, io, item.del_data); // 공지사항 데이터 삭제
+  });
+  socket.on("Send Complaint Data Delete", (item) => {
+    User_Data_Delete.ftn_complaint_data_delete(db, io, item.del_data); // 불만사항 데이터 삭제
+  });
+  const User_Data_Update = require("./Sql/Function/Post_page/Post_User_Data_Update.js");
+  socket.on("Send Notice Data Update", (item) => {
+    User_Data_Update.ftn_user_notice_data_update(db, io, item);
+  });
+  socket.on("Send Complaint Data Update", (item) => {
+    User_Data_Update.ftn_user_complaint_data_update(db, io, item);
+  });
   // 서버 연결 종료
   socket.on("disconnect", function () {
     Close_dbms.close_dbms(db);
