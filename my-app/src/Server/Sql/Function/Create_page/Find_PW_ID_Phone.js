@@ -1,7 +1,7 @@
 // 아이디 중복 확인
 const Sql_select = require("../../Query_module/Sql_select.js");
 
-exports.find_pw_id_phone = async function (db, io, pw) {
+async function find_pw_id_phone(db, io, pw) {
   var data = [];
   data[0] = pw.id;
   data[1] = pw.phone;
@@ -37,6 +37,9 @@ exports.find_pw_id_phone = async function (db, io, pw) {
 
   return new Promise((resolve, reject) => {
     io.emit("Receive Find PW Check", { PW: receive_type, num: send_rec_type });
-    resolve(send_rec_type);
   });
+}
+
+exports.ftn_find_pw_id_phone = async function (db, io, item) {
+  await find_pw_id_phone(db, io, item);
 };

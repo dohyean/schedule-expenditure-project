@@ -1,7 +1,7 @@
 // 아이디 중복 확인
 const Sql_select = require("../../Query_module/Sql_select.js");
 
-exports.duplicate_chck = async function (db, io, id) {
+async function duplicate_chck(db, io, id) {
   var receive_type = await Sql_select.sql_select(
     db,
     "user_data",
@@ -21,6 +21,9 @@ exports.duplicate_chck = async function (db, io, id) {
   }
   return new Promise((resolve, reject) => {
     io.emit("Receive Duplicate Check", { Duplicate: send_rec_type });
-    resolve(send_rec_type);
   });
+}
+
+exports.ftn_duplicate_check = async function (db, io, item) {
+  await duplicate_chck(db, io, item.id);
 };

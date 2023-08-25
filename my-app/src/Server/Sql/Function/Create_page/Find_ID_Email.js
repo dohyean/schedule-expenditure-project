@@ -1,7 +1,7 @@
 // 아이디 중복 확인
 const Sql_select = require("../../Query_module/Sql_select.js");
 
-exports.find_id_email = async function (db, io, email) {
+async function find_id_email(db, io, email) {
   var receive_type = await Sql_select.sql_select(
     db,
     "user_data",
@@ -22,6 +22,9 @@ exports.find_id_email = async function (db, io, email) {
 
   return new Promise((resolve, reject) => {
     io.emit("Receive Find ID Check", { ID: receive_type, num: send_rec_type });
-    resolve(send_rec_type);
   });
+}
+
+exports.ftn_find_id_email = async function (db, io, item) {
+  await find_id_email(db, io, item.email);
 };

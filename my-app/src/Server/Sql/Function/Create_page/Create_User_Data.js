@@ -3,7 +3,7 @@ const Sql_insert = require("../../Query_module/Sql_insert.js");
 const Sql_delete = require("../../Query_module/Sql_delete.js");
 
 // user_data에 각종 데이터 저장
-async function user_data_save(db, data) {
+async function user_data(db, data) {
   var dataset = [];
   dataset[0] = data.id;
   dataset[1] = data.phone;
@@ -55,8 +55,8 @@ async function user_data_del(db, id) {
   Sql_delete.sql_delete(db, "user_data", "WHERE user_id = ?", id);
 }
 
-exports.ftn_user_data_save = async function (db, io, item) {
-  var user = await user_data_save(db, item);
+async function user_data_save(db, io, item) {
+  var user = await user_data(db, item);
   if (user === 0) {
     io.emit("Receive User Data Save", { User_save: user });
   } else {
@@ -67,4 +67,8 @@ exports.ftn_user_data_save = async function (db, io, item) {
     }
     io.emit("Receive User Data Save", { User_save: login });
   }
+}
+
+exports.ftn_user_data_save = async function (db, io, item) {
+  await user_data_save(db, io, item);
 };

@@ -1,7 +1,7 @@
 // 로그인 페이지 id 확인
 const Sql_select = require("../../Query_module/Sql_select.js");
 
-exports.login_check = async function (db, io, id) {
+async function login_check(db, io, id) {
   var receive_type = await Sql_select.sql_select(
     db,
     "login_data",
@@ -19,6 +19,9 @@ exports.login_check = async function (db, io, id) {
   }
   return new Promise((resolve, reject) => {
     io.emit("Receive Login ID Check", { num: send_rec_type });
-    resolve(send_rec_type);
   });
+}
+
+exports.ftn_login_check = async function (db, io, id) {
+  await login_check(db, io, id);
 };

@@ -2,7 +2,7 @@
 const Sql_insert = require("../../Query_module/Sql_insert.js");
 
 // 불만사항 데이터 저장
-async function complaint_data(db, data) {
+async function complaint_data_save(db, io, data) {
   var dataset = [];
   dataset[0] = data.id;
   dataset[1] = data.name;
@@ -26,11 +26,10 @@ async function complaint_data(db, data) {
   console.log(receive_type);
 
   return new Promise((resolve, reject) => {
-    resolve(receive_type);
+    io.emit("Receive Complaint Data Save", { save_data: receive_type });
   });
 }
 
-exports.complaint_data_save = async function (db, io, item) {
-  var user = await complaint_data(db, item);
-  io.emit("Receive Complaint Data Save", { save_data: user });
+exports.ftn_complaint_data_save = async function (db, io, item) {
+  await complaint_data_save(db, io, item);
 };

@@ -2,7 +2,7 @@
 const Sql_insert = require("../../Query_module/Sql_insert.js");
 
 // 공지사항 데이터 저장
-async function notice_data(db, data) {
+async function notice_data_save(db, io, data) {
   var dataset = [];
   dataset[0] = data.id;
   dataset[1] = data.name;
@@ -24,11 +24,10 @@ async function notice_data(db, data) {
   );
 
   return new Promise((resolve, reject) => {
-    resolve(receive_type);
+    io.emit("Receive Notice Data Save", { save_data: receive_type });
   });
 }
 
-exports.notice_data_save = async function (db, io, item) {
-  var user = await notice_data(db, item);
-  io.emit("Receive Notice Data Save", { save_data: user });
+exports.ftn_notice_data_save = async function (db, io, item) {
+  await notice_data_save(db, io, item);
 };

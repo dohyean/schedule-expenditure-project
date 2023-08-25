@@ -1,7 +1,7 @@
 // 로그인 페이지 password 확인
 const Sql_select = require("../../Query_module/Sql_select.js");
 
-exports.login_check = async function (db, io, pw) {
+async function login_check(db, io, pw) {
   var receive_type = await Sql_select.sql_select(
     db,
     "login_data",
@@ -19,6 +19,9 @@ exports.login_check = async function (db, io, pw) {
   }
   return new Promise((resolve, reject) => {
     io.emit("Receive Login PW Check", { num: send_rec_type });
-    resolve(send_rec_type);
   });
+}
+
+exports.ftn_login_check = async function (db, io, pw) {
+  await login_check(db, io, pw);
 };
