@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import "../../Style/test_TabMenu.css";
+import "../Style/test_TabMenu.css";
 
-const TabMenu = () => {
+const TabMenu: React.FC = () => {
   const [isHovering, setIsHovering] = useState(false);
 
   const handleMouseOver = () => {
@@ -55,18 +55,10 @@ const TabMenu = () => {
               className={isHovering ? "topmenu_hover_ul" : "topmenu_ul"}
               onMouseOut={handleMouseOut}
             >
-              <li type="button" onClick={write_Notice}>
-                공지사항 작성
-              </li>
-              <li type="button" onClick={write_Complaint}>
-                불만사항 작성
-              </li>
-              <li type="button" onClick={read_Notice}>
-                공지사항
-              </li>
-              <li type="button" onClick={read_Complaint}>
-                불만사항
-              </li>
+              <li onClick={write_Notice}>공지사항 작성</li>
+              <li onClick={write_Complaint}>불만사항 작성</li>
+              <li onClick={read_Notice}>공지사항</li>
+              <li onClick={read_Complaint}>불만사항</li>
             </ul>
           </li>
           <li

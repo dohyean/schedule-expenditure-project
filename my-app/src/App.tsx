@@ -13,8 +13,7 @@ import PostBoard_Insert from "./Components/PostBoard_Insert";
 import PostModal from "./Components/PostModal";
 import PostBoard_Content from "./Components/PostBoard_Content";
 import Main from "./Components/Main";
-
-import Test_Page from "./Components/test/Test_page";
+import Main_Page from "./Components/Main_Page";
 
 const App = () => {
   return (
@@ -28,8 +27,7 @@ const App = () => {
             <Route path="/find_pw" element={<Find_pw />}></Route>
             <Route path="/create" element={<Create />}></Route>
             <Route path="/postmodal" element={<PostModal />}></Route>
-
-            <Route path="/test_page" element={<Test_Page />}></Route>
+            <Route path="/main_page" element={<Main_Page />}></Route>
 
             <Route
               path="/postboard_notice"

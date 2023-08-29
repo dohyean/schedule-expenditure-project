@@ -29,7 +29,7 @@ const PostTr: React.FC<PostTrProps> = ({
     <tbody>
       {info.map((item) => (
         <PostTd
-          key={item.id}
+          key={item.order}
           item={item}
           user_id={user_id}
           notice_complaint={notice_complaint}

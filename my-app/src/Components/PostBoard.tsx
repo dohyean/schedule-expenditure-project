@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import "../Style/PostBoard.css";
-/* import TopMenu from './TopMenu'; */
 import Login from "./Login";
 import PostTr from "./PostTr";
 import io from "socket.io-client";
@@ -96,7 +95,6 @@ const PostBoard: React.FC = () => {
   } else {
     return (
       <div className="body_box">
-        {/* <TopMenu /> */}
         <div className="bottom_box">
           <div className="left_box">
             <div className="main_area">
@@ -123,14 +121,20 @@ const PostBoard: React.FC = () => {
                       handleDataChange={set_data_change}
                     />
                   </table>
+                  <table>
+                    <thead>
+                      <tr className="direction_button">
+                        <th className="left_button" onClick={go_left}>
+                          ◀
+                        </th>
+                        <th className="page_button">{cur_num} page</th>
+                        <th className="right_button" onClick={go_right}>
+                          ▶
+                        </th>
+                      </tr>
+                    </thead>
+                  </table>
                 </div>
-                <button type="button" onClick={go_left}>
-                  ◀
-                </button>
-                <text> {cur_num} page </text>
-                <button type="button" onClick={go_right}>
-                  ▶
-                </button>
               </div>
             </div>
           </div>

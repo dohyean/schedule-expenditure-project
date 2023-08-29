@@ -81,53 +81,53 @@ const PostTd: React.FC<PostTdProps> = ({
   if (item.id === user_id) {
     return (
       <tr className="tr2">
-        <tbody className="tb" onClick={onContent}>
+        <th className="tb" onClick={onContent}>
           {item.order}
-        </tbody>
-        <tbody className="tb" onClick={onContent}>
+        </th>
+        <th className="tb" onClick={onContent}>
           {item.name}
-        </tbody>
-        <tbody className="tb" onClick={onContent}>
+        </th>
+        <th className="tb" onClick={onContent}>
           {item.date}
-        </tbody>
-        <tbody className="tb" onClick={onContent}>
+        </th>
+        <th className="tb" onClick={onContent}>
           {item.title}
-        </tbody>
-        <tbody className="tb" onClick={onContent}>
+        </th>
+        <th className="tb" onClick={onContent}>
           {item.content}
-        </tbody>
-        <tbody onClick={onEdit} className="edit_btn">
+        </th>
+        <th onClick={onEdit} className="edit_btn">
           <FontAwesomeIcon icon={faEdit} />
-        </tbody>
-        <tbody onClick={onRemove} className="remove_btn">
+        </th>
+        <th onClick={onRemove} className="remove_btn">
           <FontAwesomeIcon icon={faTrashAlt} />
-        </tbody>
+        </th>
       </tr>
     );
   } else {
     return (
       <tr className="tr2">
-        <tbody className="tb" onClick={onContent}>
+        <th className="tb" onClick={onContent}>
           {item.order}
-        </tbody>
-        <tbody className="tb" onClick={onContent}>
+        </th>
+        <th className="tb" onClick={onContent}>
           {item.name}
-        </tbody>
-        <tbody className="tb" onClick={onContent}>
+        </th>
+        <th className="tb" onClick={onContent}>
           {item.date}
-        </tbody>
-        <tbody className="tb" onClick={onContent}>
+        </th>
+        <th className="tb" onClick={onContent}>
           {item.title}
-        </tbody>
-        <tbody className="tb" onClick={onContent}>
+        </th>
+        <th className="tb" onClick={onContent}>
           {item.content}
-        </tbody>
-        <tbody className="not_use_edit_btn">
+        </th>
+        <th className="not_use_edit_btn">
           <FontAwesomeIcon icon={faEdit} />
-        </tbody>
-        <tbody className="not_use_remove_btn">
+        </th>
+        <th className="not_use_remove_btn">
           <FontAwesomeIcon icon={faTrashAlt} />
-        </tbody>
+        </th>
       </tr>
     );
   }

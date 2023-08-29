@@ -26,7 +26,7 @@ const PostBoard_Complaint: React.FC = () => {
 
   const navigate = useNavigate();
   function Go_Back() {
-    navigate("/test_page", {
+    navigate("/main_page", {
       state: { id: user_info.id },
     });
   }
@@ -60,7 +60,6 @@ const PostBoard_Complaint: React.FC = () => {
     await PostBoard_Data_Save.Send_Complaint_Five_Data(socket, cur_num);
     const data = await PostBoard_Data_Save.Rec_Complaint_Five_Data(socket);
     await use_complaint_save_data(data);
-    console.log(data);
     socket.disconnect();
   }
 
@@ -129,19 +128,21 @@ const PostBoard_Complaint: React.FC = () => {
                       handleDataChange={set_data_change}
                     />
                   </table>
+                  <table>
+                    <thead>
+                      <tr className="direction_button">
+                        <th className="left_button" onClick={go_left}>
+                          ◀
+                        </th>
+                        <th className="page_button">{cur_num} page</th>
+                        <th className="right_button" onClick={go_right}>
+                          ▶
+                        </th>
+                      </tr>
+                    </thead>
+                  </table>
+                  <div onClick={Go_Back}>이전으로</div>
                 </div>
-                <div>
-                  <button type="button" onClick={go_left}>
-                    ◀
-                  </button>
-                  <text> {cur_num} page </text>
-                  <button type="button" onClick={go_right}>
-                    ▶
-                  </button>
-                </div>
-                <button type="button" onClick={Go_Back}>
-                  이전으로
-                </button>
               </div>
             </div>
           </div>
