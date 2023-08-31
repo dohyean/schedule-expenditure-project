@@ -67,6 +67,7 @@ const PostTd: React.FC<PostTdProps> = ({
   const onContent = () => {
     navigate("/postboard_content", {
       state: {
+        user_id: user_id,
         id: item.id,
         name: item.name,
         date: item.date,

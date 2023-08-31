@@ -88,7 +88,7 @@ const PostBoard_Complaint: React.FC = () => {
 
   function go_left() {
     if (cur_num !== 1) {
-      setCurNum(cur_num - 5);
+      setCurNum(cur_num - 10);
     }
   }
 

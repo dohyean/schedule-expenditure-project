@@ -82,7 +82,7 @@ const PostBoard: React.FC = () => {
 
   function go_left() {
     if (cur_num !== 1) {
-      setCurNum(cur_num - 5);
+      setCurNum(cur_num - 10);
     }
   }
 
@@ -100,7 +100,7 @@ const PostBoard: React.FC = () => {
             <div className="main_area">
               <div className="post_area">
                 <div className="post_table">
-                  <h1 className="h1">공지사항 게시글 리스트</h1>
+                  <h1 className="h1">공지사항</h1>
                   <table className="table">
                     <thead className="thead">
                       <tr className="tr1">

@@ -27,11 +27,11 @@ function PostBoard_Content() {
   function Go_Back() {
     if (user_info.notice_complaint === "공지사항") {
       navigate("/PostBoard_Notice", {
-        state: { id: user_info.id, cur_num: user_info.cur_num },
+        state: { id: user_info.user_id, cur_num: user_info.cur_num },
       });
     } else if (user_info.notice_complaint === "불만사항") {
       navigate("/postboard_complaint", {
-        state: { id: user_info.id, cur_num: user_info.cur_num },
+        state: { id: user_info.user_id, cur_num: user_info.cur_num },
       });
     } else {
       navigate("/", {

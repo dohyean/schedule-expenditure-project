@@ -1,5 +1,5 @@
-import "../Style/Login.css";
-import React, { useState, KeyboardEvent } from "react";
+import "../Style/User_Infomation.css";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 function User_Infomation() {
@@ -9,16 +9,34 @@ function User_Infomation() {
       state: { cur_num: 1 },
     });
   };
+
+  const [resize_width, setResizeWidth] = useState(Number(window.innerWidth));
+  const [resize_height, setResizeHeight] = useState(Number(window.innerHeight));
+  const [use, setUse] = useState(true);
+
+  const handleResize = () => {
+    setResizeWidth(Number(window.innerWidth));
+    setResizeHeight(Number(window.innerHeight));
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    if (resize_width > 900) {
+      setUse(true);
+    } else {
+      setUse(false);
+    }
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  });
   return (
-    <div className="right_box">
-      <div className="login_form">
-        <div className="login_top_section">
-          <div className="login_input_section">
-            <div className="user_picutre"></div>
-            <div className="user_name"></div>
-            <div onClick={logout}>로그아웃</div>
-          </div>
-        </div>
+    <div className="login_form">
+      <div
+        className={use ? "user_logout" : "test_user_logout"}
+        onClick={logout}
+      >
+        로그아웃
       </div>
     </div>
   );
