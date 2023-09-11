@@ -1,87 +1,159 @@
-.body_box {
-    display: flex;
-    flex-direction: column;
+.postboard_main_div {
+  flex: 1;
 }
 
-.bottom_box {
-    display: flex;
-    flex-direction: row;
+.postboard_h1 {
+  font-size: 4vw;
+  font-weight: bold;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+  text-align: center;
 }
 
-.left_box {
-    background-color: aqua;
-    width: 70%;
-    height: 200px;
-    position: relative;
+.postboard_h1_browser {
+  font-size: 2.25rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
 }
 
-.main_area {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    justify-content: center; /* 로그인 폼 안의 요소들이 중앙 */
-    align-items: center; /* 로그인 폼 안의 요소들이 중앙 */
-    position: absolute;
-    top : 0%;
-    left: 50%;
-    transform: translate(-50%,10%);
-}
-/* 
-    box의 position: relative;, height: 100%; 과 
-    login-form의 position: absolute; 는
-    로그인 폼을 중앙정렬하기 위한 사전작업
-*/
-
-/* tailwindcss에서는 container max-w-screen-lg mx-auto */
-.post_table {
-    display: flex;
-    flex-direction: column;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 3rem;
+.postboard_title_table {
+  table-layout: auto;
+  width: 100%;
 }
 
-/* tailwindcss에서는 container max-w-screen-lg mx-auto */
-.complain_table {
-    display: flex;
-    flex-direction: column;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 6rem;
+.postboard_content_table {
+  table-layout: auto;
+  width: 100%;
 }
 
-/* tailwind에서는 text-xl font-bold mt-5 mb-3 text-center */
-.h1 {
-    font-size: 2.25rem;
-    font-weight: bold;
-    margin-top: 1.25rem;
-    margin-bottom: 0.75rem;
-    text-align: center;
+.postboard_thead {
+  justify-content: space-between;
 }
 
-/* tailwindcss에서는 min-w-full table-auto text-gray-800 */
-.table {
-    min-width: 100%;
-    table-layout: auto;
-    color: #2d3748;
+.postboard_tr1 {
+  background-color: #2d3748;
+  color: #d1d5db;
+  text-align: center;
+  font-size: 2vw;
 }
 
-/* tailwindcss에서는 justify-between */
-.thead {
-    display: flex;
-    justify-content: space-between;
+.postboard_tr1_browser {
+  background-color: #2d3748;
+  color: #d1d5db;
+  text-align: center;
+  font-size: 18px;
 }
 
-/* tailwindcss에서는 bg-gray-800 */
-.tr1 {
-    background-color: #2d3748;
+.postboard_order_btn {
+  padding-left: 1vw;
+  padding-right: 1vw;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
-/* tailwindcss에서는 text-gray-300 px-4 py-3 */
-.contents1 {
-    color: #d1d5db;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
+.postboard_order_btn_browser {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.postboard_name_btn {
+  padding-left: 2vw;
+  padding-right: 2vw;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.postboard_name_btn_browser {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.postboard_date_btn {
+  padding-left: 2vw;
+  padding-right: 2vw;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.postboard_date_btn_browser {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.postboard_title_btn {
+  padding-left: 7vw;
+  padding-right: 7vw;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+.postboard_title_btn_browser {
+  padding-left: 3.5rem;
+  padding-right: 3.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.postboard_edit_btn {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.postboard_del_btn {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.postboard_title_div {
+  background-color: #2d3748;
+  margin-left: 2vw;
+  margin-right: 2vw;
+}
+
+.postboard_title_div_browser {
+  background-color: #2d3748;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.postboard_content_div {
+  margin-left: 2vw;
+  margin-right: 2vw;
+}
+
+.postboard_content_div_browser {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.postboard_btn_div {
+  margin-left: 2vw;
+  margin-right: 2vw;
+}
+
+.postboard_btn_table {
+  table-layout: auto;
+  width: 100%;
+}
+
+.postboard_left_btn {
+  flex: 1;
+  font-style: 2vw;
+}
+.postboard_page_btn {
+  flex: 1;
+  padding-left: 6vw;
+  padding-right: 6vw;
+  font-style: 2vw;
+}
+.postboard_right_btn {
+  flex: 1;
+  font-style: 2vw;
 }

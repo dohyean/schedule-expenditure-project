@@ -2,7 +2,9 @@
 function user_notice_data(db, io, num) {
   return new Promise((resolve, reject) => {
     var sqlQuery = `SELECT * FROM notice_data 
-                    WHERE note_order BETWEEN ${num} AND ${num + 9}`;
+                    WHERE note_order BETWEEN ${num} AND ${
+      num + 9
+    } ORDER BY note_order`;
     var receive_type = 4;
     var return_data = "";
     db.all(sqlQuery, (err, result) => {
@@ -38,7 +40,9 @@ exports.ftn_user_notice_data = async function (db, io, item) {
 function user_complaint_data(db, io, num) {
   return new Promise((resolve, reject) => {
     var sqlQuery = `SELECT * FROM complaint_data 
-                    WHERE complaint_order BETWEEN ${num} AND ${num + 9}`;
+                    WHERE complaint_order BETWEEN ${num} AND ${
+      num + 9
+    } ORDER BY complaint_order`;
     var receive_type = 4;
     var return_data = "";
     db.all(sqlQuery, (err, result) => {

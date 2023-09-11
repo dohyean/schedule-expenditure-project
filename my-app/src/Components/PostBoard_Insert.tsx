@@ -54,7 +54,11 @@ function PostBoard_Insert() {
 
   function Go_Back() {
     navigate("/main_page", {
-      state: { id: user_info.id },
+      state: {
+        id: user_info.id,
+        cur_num: user_info.cur_num,
+        page: user_info.title,
+      },
     });
   }
 
@@ -73,7 +77,9 @@ function PostBoard_Insert() {
           data = await PostFunc_Save.Rec_Complaint_Data(socket);
         }
         if (data === 1) {
-          navigate("/main_page", { state: { id: user_info.id } });
+          navigate("/main_page", {
+            state: { id: user_info.id, cur_num: 1, page: user_info.title },
+          });
         } else {
           alert("관리자에게 문의해주세요.");
         }

@@ -22,12 +22,6 @@ exports.ftn_notice_data_delete = async function (db, io, item) {
       "note_order = note_order - 1",
       `WHERE note_order > ${item.order}`
     );
-    receive_type = await Sql_update.sql_update(
-      db,
-      "SQLITE_SEQUENCE",
-      "seq = seq - 1",
-      "WHERE name = 'notice_data'"
-    );
   }
 
   return new Promise((resolve, reject) => {
@@ -56,12 +50,6 @@ exports.ftn_complaint_data_delete = async function (db, io, item) {
       "complaint_data",
       "complaint_order = complaint_order - 1",
       `WHERE complaint_order > ${item.order}`
-    );
-    receive_type = await Sql_update.sql_update(
-      db,
-      "SQLITE_SEQUENCE",
-      "seq = seq - 1",
-      "WHERE name = 'complaint_data'"
     );
   }
   return new Promise((resolve, reject) => {

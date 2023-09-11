@@ -26,15 +26,23 @@ function PostBoard_Content() {
 
   function Go_Back() {
     if (user_info.notice_complaint === "공지사항") {
-      navigate("/PostBoard_Notice", {
-        state: { id: user_info.user_id, cur_num: user_info.cur_num },
+      navigate("/main_page", {
+        state: {
+          id: user_info.user_id,
+          cur_num: user_info.cur_num,
+          page: user_info.notice_complaint,
+        },
       });
     } else if (user_info.notice_complaint === "불만사항") {
-      navigate("/postboard_complaint", {
-        state: { id: user_info.user_id, cur_num: user_info.cur_num },
+      navigate("/main_page", {
+        state: {
+          id: user_info.user_id,
+          cur_num: user_info.cur_num,
+          page: user_info.notice_complaint,
+        },
       });
     } else {
-      navigate("/", {
+      navigate("/postboard_main", {
         state: { cur_num: user_info.cur_num },
       });
     }

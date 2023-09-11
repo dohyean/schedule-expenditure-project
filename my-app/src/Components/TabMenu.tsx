@@ -1,139 +1,84 @@
+import "../Style/TabMenu.css";
 import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import "../Style/test_TabMenu.css";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 
-const TabMenu: React.FC = () => {
+interface TabMenuProps {
+  user_id: string;
+  browser: boolean;
+  hovering_check: (input_data: boolean) => void;
+}
+
+const TabMenu: React.FC<TabMenuProps> = ({
+  user_id,
+  browser,
+  hovering_check,
+}) => {
   const [isHovering, setIsHovering] = useState(false);
-
   const handleMouseOver = () => {
     setIsHovering(true);
+    hovering_check(true);
   };
 
   const handleMouseOut = () => {
     setIsHovering(false);
+    hovering_check(false);
   };
-
-  const location = useLocation();
-  const userInfo = { ...location.state };
 
   const navigate = useNavigate();
 
-  function write_Notice() {
-    navigate("/postboard_insert", {
-      state: { id: userInfo.id, title: "공지사항" },
-    });
-  }
-
-  function write_Complaint() {
-    navigate("/postboard_insert", {
-      state: { id: userInfo.id, title: "불만사항" },
-    });
-  }
-
   function read_Notice() {
-    navigate("/postboard_notice", {
-      state: { id: userInfo.id, cur_num: 1 },
+    alert("공지사항");
+    navigate("/change_page", {
+      state: { id: user_id, cur_num: 1, page: "공지사항", name: "main_page" },
     });
   }
 
   function read_Complaint() {
-    navigate("/postboard_complaint", {
-      state: { id: userInfo.id, cur_num: 1 },
+    alert("불만사항");
+    navigate("/change_page", {
+      state: { id: user_id, cur_num: 1, page: "불만사항", name: "main_page" },
     });
   }
 
-  const [resize_width, setResizeWidth] = useState(Number(window.innerWidth));
-  const [resize_height, setResizeHeight] = useState(Number(window.innerHeight));
-  const [use, setUse] = useState(true);
-
-  const handleResize = () => {
-    setResizeWidth(Number(window.innerWidth));
-    setResizeHeight(Number(window.innerHeight));
-  };
-
-  useEffect(() => {
-    window.addEventListener("resize", handleResize);
-    if (resize_width > 900) {
-      setUse(true);
-    } else {
-      setUse(false);
-    }
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  });
-
   return (
-    <div className="topmenubar">
-      <nav className="navi">
-        <ul className={use ? "topmenu_font_ul" : "test_topmenu_font_ul"}>
-          <li
-            className={isHovering ? "topmenu_hover" : "topmenu"}
-            onMouseOver={handleMouseOver}
-            onMouseOut={handleMouseOut}
-          >
-            기타
-            <ul className={isHovering ? "topmenu_hover_ul" : "topmenu_ul"}>
-              <li
-                className={
-                  isHovering ? "topmenu_font_li" : "test_topmenu_font_li"
-                }
-                onClick={write_Notice}
-              >
-                공지사항 작성
-              </li>
-              <li
-                className={
-                  isHovering ? "topmenu_font_li" : "test_topmenu_font_li"
-                }
-                onClick={write_Complaint}
-              >
-                불만사항 작성
-              </li>
-              <li
-                className={
-                  isHovering ? "topmenu_font_li" : "test_topmenu_font_li"
-                }
-                onClick={read_Notice}
-              >
-                공지사항
-              </li>
-              <li
-                className={
-                  isHovering ? "topmenu_font_li" : "test_topmenu_font_li"
-                }
-                onClick={read_Complaint}
-              >
-                불만사항
-              </li>
+    <div
+      className={
+        isHovering ? "tabmenu_div_not_hovering" : "tabmenu_div_hovering"
+      }
+      onMouseOut={handleMouseOut}
+      onMouseOver={handleMouseOver}
+    >
+      <form className={browser ? "tabmenu_form" : "tabmenu_form_browser"}>
+        <div className="topForm_main_ul">테스트1</div>
+        <div className="topForm_main_ul">테스트2</div>
+        <div className="topForm_main_ul">기타</div>
+      </form>
+      <div>
+        <form
+          className={
+            isHovering ? "tabmenu_form_hovering" : "tabmenu_form_not_hovering"
+          }
+        >
+          <div className="bottmForm_sub_div">
+            <ul className="bottomForm_font_size">1-1</ul>
+            <ul className="bottomForm_font_size">1-2</ul>
+            <ul className="bottomForm_font_size">1-3</ul>
+          </div>
+          <div className="bottmForm_sub_div">
+            <ul className="bottomForm_font_size">2-1</ul>
+            <ul className="bottomForm_font_size">2-2</ul>
+            <ul className="bottomForm_font_size">2-3</ul>
+          </div>
+          <div className="bottmForm_sub_div">
+            <ul className="bottomForm_font_size" onClick={read_Notice}>
+              공지사항
             </ul>
-          </li>
-          <li
-            className={isHovering ? "topmenu_hover" : "topmenu"}
-            onMouseOver={handleMouseOver}
-            onMouseOut={handleMouseOut}
-          >
-            메뉴2
-            <ul className={isHovering ? "topmenu_hover_ul" : "topmenu_ul"}>
-              <li>메뉴2-1</li>
-              <li>메뉴2-2</li>
-              <li>메뉴2-3</li>
+            <ul className="bottomForm_font_size" onClick={read_Complaint}>
+              불만사항
             </ul>
-          </li>
-          <li
-            className={isHovering ? "topmenu_hover" : "topmenu"}
-            onMouseOver={handleMouseOver}
-            onMouseOut={handleMouseOut}
-          >
-            메뉴3
-            <ul className={isHovering ? "topmenu_hover_ul" : "topmenu_ul"}>
-              <li>메뉴3-1</li>
-              <li>메뉴3-2</li>
-              <li>메뉴3-3</li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

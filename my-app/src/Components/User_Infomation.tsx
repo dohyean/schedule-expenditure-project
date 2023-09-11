@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 function User_Infomation() {
   const navigate = useNavigate();
   const logout = () => {
-    navigate("/postboard", {
+    navigate("/postboard_main", {
       state: { cur_num: 1 },
     });
   };

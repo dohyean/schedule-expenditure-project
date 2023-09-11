@@ -47,7 +47,9 @@ function Login() {
       await Login_ID_PW.Send_Login_PW(socket, state.pw);
       var PW_check = await Login_ID_PW.Rec_Login_PW(socket);
       if (PW_check === 2) {
-        navigate("/main_page", { state: { id: state.id } });
+        navigate("/main_page", {
+          state: { id: state.id, cur_num: 1, page: "공지사항" },
+        });
       } else if (PW_check === 1) {
         alert("아이디가 없거나 비밀번호가 틀립니다.");
       } else {
@@ -62,65 +64,63 @@ function Login() {
   }
 
   return (
-    <div className="right_box">
-      <div className="login_form">
-        <div className="login_top_section">
-          <div className="login_input_section">
-            <input
-              type="text"
-              name="id"
-              className="login_id"
-              placeholder="아이디"
-              onChange={handleChange}
-              onKeyUp={handleOnKeyPress}
-            ></input>
-            <input
-              type="password"
-              name="pw"
-              className="login_password"
-              value={state.pw}
-              placeholder="비밀번호"
-              onChange={handleChange}
-              onKeyUp={handleOnKeyPress}
-            ></input>
-          </div>
-          <form method="get">
-            <button type="button" className="login_btn" onClick={Login_check}>
-              로그인
-            </button>
-          </form>
+    <form className="login_form">
+      <div className="login_top_section">
+        <div className="login_input_section">
+          <input
+            type="text"
+            name="id"
+            className="login_id"
+            placeholder="아이디"
+            onChange={handleChange}
+            onKeyUp={handleOnKeyPress}
+          ></input>
+          <input
+            type="password"
+            name="pw"
+            className="login_password"
+            value={state.pw}
+            placeholder="비밀번호"
+            onChange={handleChange}
+            onKeyUp={handleOnKeyPress}
+          ></input>
         </div>
-        <div className="login_option">
-          <form method="get" className="option1">
-            <button
-              type="submit"
-              className="option1_inner"
-              onClick={navigateToFindid}
-            >
-              아이디
-            </button>
-          </form>
-          <form method="get" className="option2">
-            <button
-              type="submit"
-              className="option2_inner"
-              onClick={navigateToFindpw}
-            >
-              비밀번호
-            </button>
-          </form>
-          <form method="get" className="option3">
-            <button
-              type="submit"
-              className="option3_inner"
-              onClick={navigateToCreate}
-            >
-              회원가입
-            </button>
-          </form>
-        </div>
+        <form method="get">
+          <button type="button" className="login_btn" onClick={Login_check}>
+            로그인
+          </button>
+        </form>
       </div>
-    </div>
+      <div className="login_option">
+        <form method="get" className="option1">
+          <button
+            type="submit"
+            className="option1_inner"
+            onClick={navigateToFindid}
+          >
+            아이디
+          </button>
+        </form>
+        <form method="get" className="option2">
+          <button
+            type="submit"
+            className="option2_inner"
+            onClick={navigateToFindpw}
+          >
+            비밀번호
+          </button>
+        </form>
+        <form method="get" className="option3">
+          <button
+            type="submit"
+            className="option3_inner"
+            onClick={navigateToCreate}
+          >
+            회원가입
+          </button>
+        </form>
+      </div>
+    </form>
   );
 }
 

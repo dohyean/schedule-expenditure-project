@@ -3,8 +3,18 @@
 }
 
 .navi {
+  background-color: red;
   display: flex;
   justify-content: center;
+  position: relative;
+  height: 300px;
+}
+.test_navi {
+  background-color: blue;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  height: 100px;
 }
 
 .topmenu {
@@ -13,7 +23,7 @@
   padding-left: 1vw;
   padding-right: 1vw;
   opacity: 1;
-  height: 24px;
+  height: 2vw;
 }
 
 .topmenu_hover {
@@ -22,7 +32,12 @@
   padding-left: 1vw;
   padding-right: 1vw;
   opacity: 1;
-  height: 2.1vw;
+  height: 10vw;
+}
+
+.topmenu_hover_ul {
+  list-style: none;
+  opacity: 1;
 }
 
 .topmenu_ul {
@@ -45,11 +60,6 @@
 
 .test_topmenu_font_li {
   font-size: 16px;
-}
-
-.topmenu_hover_ul {
-  list-style: none;
-  opacity: 1;
 }
 
 .navi ul li ul li {

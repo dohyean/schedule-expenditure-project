@@ -1,75 +1,57 @@
-.right_box {
-    background-color: yellow;
-    width: 30%;
-    height: 200px;
-    position: relative;
-}
-
 .login_form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* 로그인 폼 안의 요소들이 중앙 */
-    align-items: center; /* 로그인 폼 안의 요소들이 중앙 */
-    position: absolute;
-    top : 50%;
-    left: 50%;
-    transform: translate(-50%,50%);
-
+  display: flex;
+  flex-direction: column;
+  position: absolute;
 }
-/* 
-    box의 position: relative;, height: 100%; 과 
-    login-form의 position: absolute; 는
-    로그인 폼을 중앙정렬하기 위한 사전작업
-*/
 
 .login_top_section {
-    display: flex;
+  display: flex;
 }
 
 .login_input_section {
-    display: inline-block;
-    margin-right: 45%;
+  display: inline-block;
+  margin-right: 45%;
 }
 
 .login_btn {
-    background-color: yellowgreen;
-    width: 200%;
-    height: 80%;
-    text-align: center;
-    margin-top: 20%;
-    border-radius: 10px; /* 둥근모서리 설정 */
+  background-color: yellowgreen;
+  width: 200%;
+  height: 80%;
+  text-align: center;
+  margin-top: 20%;
+  border-radius: 10px; /* 둥근모서리 설정 */
 }
 
 .login_id {
-    height: 30%;
-    width: 180%;
+  height: 30%;
+  width: 180%;
 }
 
 .login_password {
-    margin-top: 5%;
-    height: 30%;
-    width: 180%;
+  margin-top: 5%;
+  height: 30%;
+  width: 180%;
 }
 
 .login_option {
-    display: flex;
-    margin-top: 5%;
-    text-align: center;
-    justify-content: center;
+  display: flex;
+  margin-top: 5%;
+  text-align: center;
+  justify-content: center;
 }
 
 /* option1, option2, option3은 회원가입 아이디찾기 비번찾기 버튼의 간격 조절 */
 .option1 {
-    margin-left: -15%;
-    margin-right: 10%;
+  margin-left: -15%;
+  margin-right: 10%;
 }
 
 .option2 {
-    margin-right: 10%;
+  margin-right: 10%;
 }
 
 .option3 {
-    margin-right: -9%;
+  margin-right: -9%;
 }
 
 /*
@@ -77,22 +59,22 @@
     transparent는 배경색 투명
 */
 .option1_inner {
-    background-color: transparent;
-    border: 0;
-    color: gray;
-    width: 180%;
+  background-color: transparent;
+  border: 0;
+  color: gray;
+  width: 180%;
 }
 
 .option2_inner {
-    background-color: transparent;
-    border: 0;
-    color: gray;
-    width: 180%;
+  background-color: transparent;
+  border: 0;
+  color: gray;
+  width: 180%;
 }
 
 .option3_inner {
-    background-color: transparent;
-    border: 0;
-    color: gray;
-    width: 180%;
+  background-color: transparent;
+  border: 0;
+  color: gray;
+  width: 180%;
 }

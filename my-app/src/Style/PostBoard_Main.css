@@ -1,0 +1,58 @@
+.postboard_main_form {
+  display: flex;
+  position: relative;
+}
+
+.postboard_main_form_hovering {
+  display: flex;
+  width: 900px;
+  position: relative;
+}
+
+.postboard_main_left_form {
+  display: left;
+  background-color: aqua;
+  width: 70%;
+  position: relative;
+}
+
+.postboard_main_right_form {
+  display: flex;
+  background-color: bisque;
+  width: 30%;
+  position: relative;
+}
+
+.postboard_main_left_top_form {
+  background-color: azure;
+  position: relative;
+}
+
+.postboard_main_left_top_form_browser {
+  background-color: azure;
+  width: 100%;
+  position: absolute;
+}
+
+.postboard_main_left_bottom_form {
+  display: flex;
+  background-color: aquamarine;
+  width: 100%;
+  position: absolute;
+}
+
+.postboard_main_left_bottom_form_browser {
+  display: flex;
+  background-color: aquamarine;
+  width: 100%;
+  position: absolute;
+  top: 1.75rem;
+}
+
+.postboard_main_left_bottom_form_browser_hover {
+  display: flex;
+  background-color: aquamarine;
+  width: 100%;
+  position: absolute;
+  top: 7rem;
+}

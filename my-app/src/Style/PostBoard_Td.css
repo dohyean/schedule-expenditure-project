@@ -1,0 +1,81 @@
+.postboard_td_tr {
+  background-color: rgb(250, 250, 250);
+  border: 2px solid;
+  border-color: #8b5cf6;
+  display: flex;
+  flex-direction: row;
+  margin-top: 0.1rem;
+  margin-top: 0.1rem;
+  font-size: 1.5vw;
+  text-align: center;
+}
+
+.postboard_td_tr_browser {
+  background-color: rgb(250, 250, 250);
+  border: 2px solid;
+  border-color: #8b5cf6;
+  display: flex;
+  flex-direction: row;
+  margin-top: 0.1rem;
+  margin-top: 0.1rem;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* tailwindcss에서는 px-4 py-3 */
+
+.postboard_td_order_btn {
+  flex: 13;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.postboard_td_name_btn {
+  flex: 22;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.postboard_td_date_btn {
+  flex: 26;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.postboard_td_title_btn {
+  flex: 40;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.postboard_td_edit_btn {
+  flex: 9;
+  color: #8b5cf6;
+  cursor: pointer;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.postboard_td_edit_btn_no {
+  flex: 9;
+  color: #9ea4aa;
+  cursor: pointer;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.postboard_td_del_btn {
+  flex: 9;
+  color: #8b5cf6;
+  cursor: pointer;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.postboard_td_del_btn_no {
+  flex: 9;
+  color: #9ea4aa;
+  cursor: pointer;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
